@@ -46,7 +46,7 @@ const Home = () => {
               </p>
               <Link to="../drop">
                 <button className="w-full py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md font-medium">
-                  Approve Course
+                  Apply Course
                 </button>
               </Link>
             </div>

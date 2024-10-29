@@ -1,8 +1,8 @@
-
-import { Route, Routes } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import Login from "./assets/Login";
 import Head from "./assets/Head";
+import Footer from "./assets/Footer"; 
 import Password from "./assets/Password";
 import Home from "./assets/Home";
 import Marks from "./assets/Marks";
@@ -18,7 +18,6 @@ import ReqApprlhod from "./assets/ReqApprlhod";
 import ReqApprldir from "./assets/ReqApprldir";
 import Home3 from "./assets/Home3";
 import Preview from "./assets/Preview"
-import Year from "./assets/Year";
 import Department from "./assets/Department";
 import Section from "./assets/Section";
 import CourseManagementPage from "./assets/CourseList";
@@ -34,17 +33,19 @@ import Error404 from "./assets/Error404";
 import RejectedStud from "./assets/RejectedStud";
 import ApprovedStudDrop from "./assets/ApprovedStudDrop";
 import RejectedStudDrop from "./assets/RejectedStudDrop";
+import Upload from "./assets/upload";
 
 function App() {
   const [email, setEmail] = useState("");
   const [otp, setOTP] = useState("");
   const [name, setname] = useState("");
-  const [user, setuser] = useState({});
+  const [user, setuser] = useState(null);
   const [mail, setmail] = useState("");
   const [year, setyear] = useState("");
   const [sec, setsec] = useState("");
   const [dept, setdept] = useState("");
   const [role, setrole] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -56,27 +57,26 @@ function App() {
       setdept(storedUser.dept);
       setuser(storedUser);
       setrole(storedUser.role);
+    } else {
+      // If no user data found, redirect to login
+      navigate("/login");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div>
       <Head name={name} role={role}/>
       <Routes>
+      <Route path="/" element={<Login email={email} setEmail={setEmail} setOTP={setOTP} otp={otp} setname={setname} setuser={setuser} setrole={setrole}/>} />
         <Route path="/login" element={<Login email={email} setEmail={setEmail} setOTP={setOTP} otp={otp} setname={setname} setuser={setuser} setrole={setrole}/>} />
         <Route path="/reset" element={<Password email={email} />} />
         <Route path="/otp" element={<OTP email={email} otp={otp} />} />
-        <Route path="/" element={
-          role === "student" ? <Home /> :
-          role === "ca" ? <Home1 /> :
-          role === "hod" ? <Home2 /> :
-          <Home3/>
-        } />
         <Route path="/home" element={
           role === "student" ? <Home /> :
           role === "ca" ? <Home1 year={year} sec={sec} dept={dept}/> :
           role === "hod" ? <Home2 /> :
           role === 'dir' ? <Home3/>:
+          role === 'OA'? <Upload user={user}/>:
           <CourseManagementPage/>
         } />
         <Route path="/approval" element={
@@ -96,7 +96,6 @@ function App() {
         <Route path="/update" element={<Updation user={user}/>} />
         <Route path="/preview" element={<Preview user={user}/>} />
         <Route path ="/droppreview" element={<PreviewDrop/>}/>
-        <Route path="/year" element={<Year/>} />
         <Route path="/dept" element={<Department/>} />
         <Route path="/section" element={<Section/>} />
         <Route path="/course-list" element={<CourseManagementPage/>} />
@@ -107,9 +106,11 @@ function App() {
         <Route path="/ApprovedStuddrop" element={<ApprovedStudDrop/>}/>
         <Route path="/RejectedStud" element={<RejectedStud/>}/>
         <Route path="/RejectedStuddrop" element={<RejectedStudDrop/>}/>
-        <Route path="*" element={<Error404/>}/>
+        <Route path="/upload" element={<Upload/>}/>
 
+        <Route path="*" element={<Error404/>}/>
       </Routes>
+      <Footer />
     </div>
   );
 }

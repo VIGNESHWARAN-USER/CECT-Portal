@@ -16,7 +16,7 @@ const Home3 = () => {
               <p className="mb-6 text-gray-600">Submit your request for course approval here.</p>
               <Link to="../approval">
                 <button className="w-full py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md font-medium">
-                  Request Approval
+                Approval Forms
                 </button>
               </Link>
             </div>
@@ -29,7 +29,7 @@ const Home3 = () => {
               <p className="mb-6 text-gray-600">Request to drop a course using this form.</p>
               <Link to="../drop">
                 <button className="w-full py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md font-medium">
-                  Drop Course
+                Verify Drop Forms
                 </button>
               </Link>
             </div>

@@ -9,6 +9,11 @@ const Upload = () => {
   };
 
   const handleUpload = async () => {
+    if (!file) {
+      alert("Please select a file to upload.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append('file', file);
 
@@ -18,9 +23,10 @@ const Upload = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      alert(response.data);
+      alert(response.data.message || 'File uploaded successfully!');
     } catch (error) {
       console.error('There was an error uploading the file!', error);
+      alert('Failed to upload file. Please try again.');
     }
   };
 

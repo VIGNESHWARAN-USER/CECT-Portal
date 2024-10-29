@@ -16,7 +16,7 @@ const Home1 = () => {
               <p className="mb-6 text-gray-600">Submit your request for course approval here.</p>
               <Link to="../approval">
                 <button className="w-full py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md font-medium">
-                  Request Approval
+                  Approval Forms
                 </button>
               </Link>
             </div>
@@ -25,11 +25,11 @@ const Home1 = () => {
           <div className="w-full md:w-1/2 lg:w-1/3 p-4">
             <div className="bg-green-200/80 flex items-center flex-col backdrop-blur-lg rounded-2xl shadow-lg p-6 md:p-12">
               <AiOutlineEdit className="w-16 h-16 mb-4 text-green-500" />
-              <h1 className="text-3xl font-semibold mb-4 text-green-900">Mark Updation</h1>
+              <h1 className="text-3xl font-semibold mb-4 text-green-900">Mark Verification</h1>
               <p className="mb-6 text-green-900">Update your marks with this request form.</p>
               <Link to="../markupdation">
                 <button className="w-full py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md font-medium">
-                  Update Marks
+                  Verify Mark Forms
                 </button>
               </Link>
             </div>
@@ -42,7 +42,7 @@ const Home1 = () => {
               <p className="mb-6 text-gray-600">Request to drop a course using this form.</p>
               <Link to="../drop">
                 <button className="w-full py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md font-medium">
-                  Drop Course
+                  Verify Drop Forms
                 </button>
               </Link>
             </div>
